@@ -3,7 +3,6 @@
 @mixin position-fixed {
     position: fixed;
     width: 100%;
-    z-index: 1;
 }
 
 @mixin d-flex-align-center {
@@ -19,6 +18,11 @@
 
 @mixin header-color-style {
     background-color: $header-color;
+    color: white;
+}
+
+@mixin footer-color-style {
+    background-color: $footer-color;
     color: white;
 }
 

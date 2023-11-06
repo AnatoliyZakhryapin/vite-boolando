@@ -58,4 +58,30 @@
     </footer>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+    @use '../styles/partials/varibils' as *;
+    @use '../styles/partials/mixins' as *;
+
+    .page-footer{
+        padding: $footer-padding;
+        @include footer-color-style;
+        @include position-fixed;
+        bottom: 0;
+        z-index: 2;
+
+        h3 {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            display: flex;
+            li {
+                margin-right: 15px;
+                img {
+                    width: 20px;
+                };
+            };
+        };  
+    };
+
+</style>
