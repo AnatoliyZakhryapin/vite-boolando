@@ -1,4 +1,39 @@
-<script></script>
+<script>
+    export default {
+        data() {
+            return {
+                gendersMenu: [
+                    {
+                        title: "Donna",
+                        url: "#"
+                    },
+                    {
+                        title: "Uomo",
+                        url: "#"
+                    },
+                    {
+                        title: "Bambini",
+                        url: "#"
+                    },
+                ],
+                iconsMenu: [
+                    {
+                        iconUrl: "/img/persona.png",
+                        url: "#"
+                    },
+                    {
+                        iconUrl: "/img/cuore.png",
+                        url: "#"
+                    },
+                    {
+                        iconUrl: "/img/borsa.png",
+                        url: "#"
+                    },
+                ]
+            }
+        }
+    }
+</script>
 
 <template>
     <header class="header-nav">
@@ -6,21 +41,21 @@
             <div class="row">
                 <div class="col">
                     <ul class="header-nav__gender-menu">
-                        <li class="gender-menu__item"><a href="">Donna</a></li>
-                        <li class="gender-menu__item"><a href="">Uomo</a></li>
-                        <li class="gender-menu__item"><a href="">Bambini</a></li>
+                        <li class="gender-menu__item" v-for="gender in gendersMenu">
+                            <a :href="gender.url">{{ gender.title }}</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col">
                     <div class="logo-content">
-                        <img class="logo" src="/img/boolean-logo.png" alt="">
+                        <img class="logo" src="/img/boolean-logo.png">
                     </div>
                 </div>
                 <div class="col">
                     <ul class="header-nav__icon-menu">
-                        <li class="icon-menu__item"><a href=""><img src="/img/persona.png" alt=""></a></li>
-                        <li class="icon-menu__item"><a href=""><img src="/img/cuore.png" alt=""></a></li>
-                        <li class="icon-menu__item"><a href=""><img src="/img/borsa.png" alt=""></a></li>
+                        <li class="icon-menu__item" v-for="icon in iconsMenu">
+                            <a :href="icon.url"><img :src="icon.iconUrl"></a>
+                        </li>
                     </ul>
                 </div>
             </div>   
