@@ -38,6 +38,10 @@ a {
     flex-wrap: wrap;
 }
 
+[class^="col"] {
+    padding: 10px;
+}
+
 .col-4 {
     flex-basis: calc((100% / 12) * 4);
 }

@@ -149,7 +149,44 @@
     </main>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped>+
     @use '../styles/partials/varibils' as *;
     @use '../styles/partials/mixins' as *;
+
+    .main-section {
+        padding: $main-padding;
+        row-gap: 30px;
+
+        .card {
+            figure {
+                position: relative;
+                &:hover .image-back {
+                    z-index: 0;
+                };
+
+                @include heart-icon;
+                @include sustainability-icon; 
+                @include discount-icon; 
+                .discount-line {
+                    bottom: 10%;
+                    position: absolute;
+                    width: 100%;
+                };
+            };
+            .card__text {
+                .name-item {
+                    font-size: 18px;
+                    font-weight: 700;
+                };
+                .sale-price {
+                    color: red;
+                    font-weight: 700;
+                };
+                .origine-price {
+                    text-decoration: line-through;
+                };
+            };
+           
+        };
+    }
 </style>
