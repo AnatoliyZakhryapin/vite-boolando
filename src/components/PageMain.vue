@@ -1,144 +1,97 @@
-<script></script>
+<script>
+    export default {
+        data() {
+            return {
+                cards: [
+                    {
+                        brand: "Levi's",
+                        nameItem: "RELAXED FIT TEE UNISEX",
+                        image: "/img/1.webp",
+                        imageBack: "/img/1b.webp",
+                        price: "29,99",
+                        salePrice: "14,99",
+                        discount: "-50%",
+                        sustainability: "Sostenibilità",
+                    },
+                    {
+                        brand: "Guess",
+                        nameItem: "ROSES TEE",
+                        image: "/img/2.webp",
+                        imageBack: "/img/2b.webp",
+                        price: "29,99",
+                        salePrice: "20,99",
+                        discount: "-50%",
+                        sustainability: "",
+                    },
+                    {
+                        brand: "Come Zucchero Filato",
+                        nameItem: "VOGLIA DI COLORI PASTELLO",
+                        image: "/img/3.webp",
+                        imageBack: "/img/3b.webp",
+                        price: "184,99",
+                        salePrice: "129,99",
+                        discount: "-50%",
+                        sustainability: "",
+                    },
+                    {
+                        brand: "Levi's",
+                        nameItem: "TEE UNISEX",
+                        image: "/img/4.webp",
+                        imageBack: "/img/4b.webp",
+                        price: "29,99",
+                        salePrice: "14,99",
+                        discount: "-50%",
+                        sustainability: "Sostenibilità",
+                    },
+                    {
+                        brand: "Maya Deluxe",
+                        nameItem: "STRIPE BODICE",
+                        image: "/img/5.webp",
+                        imageBack: "/img/5b.webp",
+                        price: "",
+                        salePrice: "99,99",
+                        discount: "",
+                        sustainability: "",
+                    },
+                    {
+                        brand: "Esprit",
+                        nameItem: "MAGLIONE-BLACK",
+                        image: "/img/6.webp",
+                        imageBack: "/img/6b.webp",
+                        price: "",
+                        salePrice: "14,99",
+                        discount: "",
+                        sustainability: "Sostenibilità",
+                    },
+                ]
+            }
+        }
+    }
+
+</script>
 
 <template>
       <main>
         <section class="main-section">
             <div class="container">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-4" v-for="card in cards">
                         <div class="card">
                             <figure class="card__image">
-                                <img src="/img/1.webp" alt="">
-                                <img class="image-back" src="/img/1b.webp" alt="">
+                                <img :src="card.image">
+                                <img class="image-back" :src="card.imageBack">
                                 <span class="heart-icon"> &hearts;</span>
                                 <div class="discount-line">
-                                    <span class="discount-icon">-50%</span>
-                                    <span class="sustainability-icon">Sostenibilità</span>
+                                    <span v-if="card.discount" class="discount-icon"> {{ card.discount }}</span>
+                                    <span v-if="card.sustainability" class="sustainability-icon">{{ card.sustainability }}</span>
                                 </div>
                             </figure>
                             <div class="card__text">
-                                <div class="brand-title">Levi's</div>
-                                <div class="name-item">RELAXED FIT TEE UNISEX</div>
+                                <div class="brand-title">{{ card.brand }}</div>
+                                <div class="name-item">{{ card.nameItem }}</div>
                                 <div class="price-item">
-                                    <span class="sale-price">14,99 &euro;</span>
-                                    <span class="origine-price">29,99 &euro;</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="card">
-                            <figure class="card__image">
-                                <img src="/img/2.webp" alt="">
-                                <img class="image-back" src="/img/2b.webp" alt="">
-                                <span class="heart-icon"> &hearts;</span>
-                                <div class="discount-line">
-                                    <span class="discount-icon">-50%</span>
-                                    <!--
-                                    <span class="sustainability-icon">Sostenibilità</span>
-                                    -->
-                                </div>
-                            </figure>
-                            <div class="card__text">
-                                <div class="brand-title">Guess</div>
-                                <div class="name-item">ROSES TEE</div>
-                                <div class="price-item">
-                                    <span class="sale-price">20,99 &euro;</span>
-                                    <span class="origine-price">29,99 &euro;</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="card">
-                            <figure class="card__image">
-                                <img src="/img/3.webp" alt="">
-                                <img class="image-back" src="/img/3b.webp" alt="">
-                                <span class="heart-icon"> &hearts;</span>
-                                <div class="discount-line">
-                                    <span class="discount-icon">-50%</span>
-                                    <!--
-                                    <span class="sustainability-icon">Sostenibilità</span>
-                                    -->
-                                </div>
-                            </figure>
-                            <div class="card__text">
-                                <div class="brand-title">Come Zucchero Filato</div>
-                                <div class="name-item">VOGLIA DI COLORI PASTELLO</div>
-                                <div class="price-item">
-                                    <span class="sale-price">129,99 &euro;</span>
-                                    <span class="origine-price">184,99 &euro;</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="card">
-                            <figure class="card__image">
-                                <img src="/img/4.webp" alt="">
-                                <img class="image-back" src="/img/4b.webp" alt="">
-                                <span class="heart-icon"> &hearts;</span>
-                                <div class="discount-line">
-                                    <span class="discount-icon">-50%</span>
-                                    <span class="sustainability-icon">Sostenibilità</span>
-                                </div>
-                            </figure>
-                            <div class="card__text">
-                                <div class="brand-title">Levi's</div>
-                                <div class="name-item">TEE UNISEX</div>
-                                <div class="price-item">
-                                    <span class="sale-price">14,99 &euro;</span>
-                                    <span class="origine-price">29,99 &euro;</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="card">
-                            <figure class="card__image">
-                                <img src="/img/5.webp" alt="">
-                                <img class="image-back" src="/img/5b.webp" alt="">
-                                <span class="heart-icon"> &hearts;</span>
-                                <div class="discount-line">
-                                    <!--
-                                    <span class="discount-icon">-50%</span>
-                                    <span class="sustainability-icon">Sostenibilità</span>
-                                    -->
-                                </div>
-                            </figure>
-                            <div class="card__text">
-                                <div class="brand-title">Maya Deluxe</div>
-                                <div class="name-item">STRIPE BODICE</div>
-                                <div class="price-item">
-                                    <span class="sale-price">99,99 &euro;</span>
-                                    <!--    
-                                    <span class="origine-price"></span>
-                                    -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="card">
-                            <figure class="card__image">
-                                <img src="/img/6.webp" alt="">
-                                <img class="image-back" src="/img/6b.webp" alt="">
-                                <span class="heart-icon"> &hearts;</span>
-                                <div class="discount-line">
-                                    <!--
-                                    <span class="discount-icon">-50%</span>
-                                    -->
-                                    <span class="sustainability-icon">Sostenibilità</span>
-                                </div>
-                            </figure>
-                            <div class="card__text">
-                                <div class="brand-title">Esprit</div>
-                                <div class="name-item">MAGLIONE-BLACK</div>
-                                <div class="price-item">
-                                    <span class="sale-price">14,99 &euro;</span>
-                                    <!--    
-                                    <span class="origine-price"></span>
-                                    -->
+                                    <span v-if="card.salePrice" class="sale-price">{{ card.salePrice }} &euro;</span>
+                                    <span v-if="card.price" class="origine-price">{{ card.price }} &euro;</span>
                                 </div>
                             </div>
                         </div>
