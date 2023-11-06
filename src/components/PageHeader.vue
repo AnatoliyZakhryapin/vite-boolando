@@ -33,6 +33,7 @@
     @use '../styles/partials/mixins' as *;
     .header-nav{
         padding: $header-padding;
+        z-index: 1;
         @include position-fixed;
         @include shadow-header;
         @include header-color-style;
