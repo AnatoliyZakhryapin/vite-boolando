@@ -149,7 +149,7 @@
     </main>
 </template>
 
-<style lang="scss" scoped>+
+<style lang="scss" scoped>
     @use '../styles/partials/varibils' as *;
     @use '../styles/partials/mixins' as *;
 
