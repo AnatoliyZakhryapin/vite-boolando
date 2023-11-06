@@ -28,4 +28,37 @@
     </header>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+    @use '../styles/partials/varibils' as *;
+    @use '../styles/partials/mixins' as *;
+    .header-nav{
+        padding: $header-padding;
+        @include position-fixed;
+        @include shadow-header;
+        @include header-color-style;
+
+        .row {
+            justify-content: space-between;
+            align-items: center;
+            .col {
+                padding: 0px;
+            };
+        };
+        .logo {
+            max-height: $header-logo-height;
+        };
+
+        ul {
+            @include d-flex-align-center;
+            a {
+                display: block;
+                padding: 0 10px;
+                line-height: 20px;
+            }
+            .icon-menu__item {
+                font-size: 50px;
+                width: 40px;
+            }
+        };
+    }
+</style>
