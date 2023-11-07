@@ -1,4 +1,6 @@
 <script>
+    import CardProduct from './CardProduct.vue';
+    
     export default {
         data() {
             return {
@@ -65,9 +67,11 @@
                     },
                 ]
             }
+        },
+        components: {
+            CardProduct,
         }
     }
-
 </script>
 
 <template>
@@ -76,25 +80,16 @@
             <div class="container">
                 <div class="row">
                     <div class="col-4" v-for="card in cards">
-                        <div class="card">
-                            <figure class="card__image">
-                                <img :src="card.image">
-                                <img class="image-back" :src="card.imageBack">
-                                <span class="heart-icon"> &hearts;</span>
-                                <div class="discount-line">
-                                    <span v-if="card.discount" class="discount-icon"> {{ card.discount }}</span>
-                                    <span v-if="card.sustainability" class="sustainability-icon">{{ card.sustainability }}</span>
-                                </div>
-                            </figure>
-                            <div class="card__text">
-                                <div class="brand-title">{{ card.brand }}</div>
-                                <div class="name-item">{{ card.nameItem }}</div>
-                                <div class="price-item">
-                                    <span v-if="card.salePrice" class="sale-price">{{ card.salePrice }} &euro;</span>
-                                    <span v-if="card.price" class="origine-price">{{ card.price }} &euro;</span>
-                                </div>
-                            </div>
-                        </div>
+                        <CardProduct
+                            :image="card.image"
+                            :imageBack="card.imageBack"
+                            :discount="card.discount"
+                            :sustainability="card.sustainability"
+                            :brand="card.brand"
+                            :nameItem="card.nameItem"
+                            :salePrice="card.salePrice"
+                            :price="card.price"
+                        />
                     </div>
                 </div>
             </div>
@@ -104,42 +99,8 @@
 
 <style lang="scss" scoped>
     @use '../styles/partials/varibils' as *;
-    @use '../styles/partials/mixins' as *;
-
     .main-section {
         padding: $main-padding;
         row-gap: 30px;
-
-        .card {
-            figure {
-                position: relative;
-                &:hover .image-back {
-                    z-index: 0;
-                };
-
-                @include heart-icon;
-                @include sustainability-icon; 
-                @include discount-icon; 
-                .discount-line {
-                    bottom: 10%;
-                    position: absolute;
-                    width: 100%;
-                };
-            };
-            .card__text {
-                .name-item {
-                    font-size: 18px;
-                    font-weight: 700;
-                };
-                .sale-price {
-                    color: red;
-                    font-weight: 700;
-                };
-                .origine-price {
-                    text-decoration: line-through;
-                };
-            };
-           
-        };
     }
 </style>
