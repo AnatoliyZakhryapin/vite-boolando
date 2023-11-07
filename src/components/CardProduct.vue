@@ -9,6 +9,28 @@
             price: Number,
             isInFavorites: Boolean,
             badges: Array,
+        },
+        methods: {
+            salePrice(price, array){
+                let scontoSting;
+                array.forEach(element => {
+                    if(element.type === "discount"){
+                        scontoSting = element.value;
+                    }
+                });
+                const sconto = Math.abs(Number(scontoSting.replace(/%/g, ""))) / 100;
+                const salePrice = price - (price * sconto);
+                return salePrice.toPrecision(4);
+            },
+            isDiscount(array){
+                let isDiscount = false;
+                array.forEach(element => {
+                    if(element.type === "discount"){
+                        isDiscount = true;
+                    }
+                });
+                return isDiscount;
+            }
         }
     }
 </script>
@@ -22,8 +44,9 @@
             <div class="discount-line">
                 <!-- DISCOUN -->
                 <span 
-                    v-for="badge in this.badges" :key="i"
-                    class="sale-price"
+                    v-for="(badge,i) in badges" 
+                    :key="i"
+                    :class="badge.type === 'tag'? 'sustainability-icon' : 'discount-icon' "
                 >
                     {{ badge.value }} &euro;
                 </span>
@@ -36,8 +59,8 @@
             <div class="name-item">{{ nameItem }}</div>
             <div class="price-item">
                 <!-- pricesale -->
-                <!-- <span v-if="salePrice" class="sale-price">{{ salePrice }} &euro;</span> -->
-                <span v-if="price" class="origine-price">{{ price }} &euro;</span>
+                <span v-if="isDiscount(badges)">{{ salePrice(price, badges) }} &euro;</span>
+                <span v-if="price">{{ price }} &euro;</span>
             </div>
         </div>
     </div>
@@ -68,13 +91,17 @@
                 font-size: 18px;
                 font-weight: 700;
             };
-            .sale-price {
-                color: red;
-                font-weight: 700;
-            };
-            .origine-price {
-                text-decoration: line-through;
-            };
+
+            .price-item {
+                & > :first-child {
+                    color: red;
+                    font-weight: 700;
+                    margin-right: 5px;
+                }
+                & > :nth-child(2) {
+                    text-decoration: line-through;
+                }
+            }
         };
     };
 </style>
