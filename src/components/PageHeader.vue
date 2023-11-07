@@ -1,5 +1,5 @@
 <script>
-    import Menu from './Menu.vue';
+    import PageMenu from './PageMenu.vue';
 
     export default {
         data() {
@@ -41,7 +41,7 @@
             }
         },
         components: {
-            Menu,
+            PageMenu,
         }
     }
 </script>
@@ -51,7 +51,7 @@
         <nav class="container">
             <div class="row">
                 <div class="col header-menu">
-                    <Menu
+                    <PageMenu
                         :links="gendersMenu.links"
                     />
                 </div>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="col header-menu">
-                    <Menu
+                    <PageMenu
                         :links="iconsMenu.links"
                     />
                 </div>

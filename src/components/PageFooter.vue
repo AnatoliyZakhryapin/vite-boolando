@@ -1,5 +1,5 @@
 <script>
-import Menu from './Menu.vue';
+import PageMenu from "./PageMenu.vue";
 
 export default {
         data() {
@@ -50,7 +50,7 @@ export default {
             }
         },
         components: {
-            Menu,
+            PageMenu,
         }
     }
 </script>
@@ -60,14 +60,14 @@ export default {
         <div class="container">
             <div class="row">
                 <div class="col-6 footer-menu">
-                    <Menu
+                    <PageMenu
                         :title="menuInformazioni.title"
                         :links="menuInformazioni.links"
                     />
                 </div>
 
-                <div class="col-6 flex justify-content-flex-end">
-                    <Menu
+                <div class="col-6 flex justify-content-flex-end footer-menu">
+                    <PageMenu
                         :title="menuSocial.title"
                         :links="menuSocial.links"
                     />
