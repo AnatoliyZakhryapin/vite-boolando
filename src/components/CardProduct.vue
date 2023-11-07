@@ -40,7 +40,7 @@
         <figure class="card__image">
             <img :src="'/img/' + frontImage">
             <img class="image-back" :src="'/img/' + backImage">
-            <span class="heart-icon"> &hearts;</span>
+            <span class="heart-icon" :class="{ 'in-favorites' : isInFavorites}"> &hearts;</span>
             <div class="discount-line">
                 <!-- DISCOUN -->
                 <span 
