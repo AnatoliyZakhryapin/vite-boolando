@@ -80,20 +80,21 @@
             padding: 0 10px;
             line-height: 20px;
         }
-    };
-}
-
-@mixin header-menu {
-    ul {
-        @include d-flex-align-center;
-        a {
-            display: block;
-            padding: 0 10px;
-            line-height: 20px;
-        }
         .icon {
             display: inline-block;
             width: $font-size;
         }
     };
+}
+
+@mixin footer-menu {
+    ul {
+        display: flex;
+        li {
+            margin-right: 15px;
+            img {
+                width: 20px;
+            };
+        };
+    };  
 }

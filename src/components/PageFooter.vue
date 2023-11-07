@@ -1,64 +1,83 @@
-<script></script>
+<script>
+import Menu from './Menu.vue';
+
+export default {
+        data() {
+            return {
+                headerMenu: "header-menu",
+                menuInformazioni: {
+                    title: "Boolando s.r.l.",
+                    links: [
+                        {
+                            text: "Informazioni legali",
+                            href: "#"
+                        },
+                        {
+                            text: "Informativa sulla privacy",
+                            href: "#"
+                        },
+                        {
+                            text: "Diritto di recesso",
+                            href: "#"
+                        },
+                    ]
+                },
+                menuSocial: {
+                    title: "Trovaci anche su",
+                    links: [
+                        {
+                            icon: "/img/twitter.png",
+                            href: "#"
+                        },
+                        {
+                            icon: "/img/instagram.png.png",
+                            href: "#"
+                        },
+                        {
+                            icon: "/img/facebook.png.png",
+                            href: "#"
+                        },
+                        {
+                            icon: "/img/tiktok.png",
+                            href: "#"
+                        },
+                        {
+                            icon: "/img/youtube.png",
+                            href: "#"
+                        },
+                    ] 
+                }
+            }
+        },
+        components: {
+            Menu,
+        }
+    }
+</script>
 
 <template>
      <footer class="page-footer">
         <div class="container">
             <div class="row">
-                <div class="col-6">
-                    <div class="widget">
-                        <h3 class="widget__title">Boolando s.r.l.</h3>
-                        <ul class="widget__menu">
-                            <li class="widget__menu__item">
-                                <a href="">Informazioni legali</a>
-                            </li>
-                            <li class="widget__menu__item">
-                                <a href="">Informativa sulla privacy</a>
-                            </li>
-                            <li class="widget__menu__item">
-                                <a href="">Diritto di recesso</a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="col-6 footer-menu">
+                    <Menu
+                        :title="menuInformazioni.title"
+                        :links="menuInformazioni.links"
+                    />
                 </div>
 
                 <div class="col-6 flex justify-content-flex-end">
-                    <div class="widget">
-                        <h3 class="widget__title">Trovaci anche su</h3>
-                        <ul class="widget__menu">
-                            <li class="widget__menu__item">
-                                <a href="">
-                                    <img src="/img/twitter.png" alt="">
-                                </a>
-                            </li>
-                            <li class="widget__menu__item">
-                                <a href="">
-                                    <img src="/img/instagram.png" alt="">
-                                </a>
-                            </li>
-                            <li class="widget__menu__item">
-                                <a href="">
-                                    <img src="/img/facebook.png" alt="">
-                                </a>
-                            </li>
-                            <li class="widget__menu__item">
-                                <a href="">
-                                    <img src="/img/tiktok.png" alt="">
-                                </a>
-                            </li>
-                            <li class="widget__menu__item">
-                                <a href="">
-                                    <img src="/img/youtube.png" alt="">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    <Menu
+                        :title="menuSocial.title"
+                        :links="menuSocial.links"
+                    />
                 </div>
             </div>
         </div>
     </footer>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
     @use '../styles/partials/varibils' as *;
     @use '../styles/partials/mixins' as *;
 
@@ -73,15 +92,10 @@
             margin-bottom: 10px;
         }
 
-        ul {
-            display: flex;
-            li {
-                margin-right: 15px;
-                img {
-                    width: 20px;
-                };
-            };
-        };  
+        .footer-menu {
+            @include footer-menu;
+        }
+
     };
 
 </style>
