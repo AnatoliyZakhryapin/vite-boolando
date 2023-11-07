@@ -30,11 +30,11 @@ export default {
                             href: "#"
                         },
                         {
-                            icon: "/img/instagram.png.png",
+                            icon: "/img/instagram.png",
                             href: "#"
                         },
                         {
-                            icon: "/img/facebook.png.png",
+                            icon: "/img/facebook.png",
                             href: "#"
                         },
                         {
