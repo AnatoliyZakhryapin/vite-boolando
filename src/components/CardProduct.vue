@@ -10,6 +10,11 @@
             isInFavorites: Boolean,
             badges: Array,
         },
+        data() {
+            return {
+                isFavoriteCard: this.isInFavorites,
+            }
+        },
         methods: {
             salePrice(price, array){
                 let scontoSting;
@@ -30,6 +35,9 @@
                     }
                 });
                 return isDiscount;
+            },
+            addToFavorites(){
+                this.isFavoriteCard = !this.isFavoriteCard
             }
         }
     }
@@ -40,7 +48,13 @@
         <figure class="card__image">
             <img :src="'/img/' + frontImage">
             <img class="image-back" :src="'/img/' + backImage">
-            <span class="heart-icon" :class="{ 'in-favorites' : isInFavorites}"> &hearts;</span>
+            <span 
+                class="heart-icon" 
+                :class="{ 'in-favorites' : this.isFavoriteCard}"
+               @click="addToFavorites()"
+            > 
+                &hearts;
+            </span>
             <div class="discount-line">
                 <!-- DISCOUN -->
                 <span 
