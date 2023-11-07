@@ -25,15 +25,15 @@
                     title: "Title",
                     links: [
                         {
-                            icon: "/img/persona.png",
+                            icon: "fa-regular fa-user",
                             href: "#"
                         },
                         {
-                            icon: "/img/cuore.png",
+                            icon: "fa-regular fa-heart",
                             href: "#"
                         },
                         {
-                            icon: "/img/borsa.png",
+                            icon: "fa-solid fa-bag-shopping",
                             href: "#"
                         },
                     ] 
