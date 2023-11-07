@@ -26,23 +26,23 @@ export default {
                     title: "Trovaci anche su",
                     links: [
                         {
-                            icon: "/img/twitter.png",
+                            icon: "fa-brands fa-twitter",
                             href: "#"
                         },
                         {
-                            icon: "/img/instagram.png",
+                            icon: "fa-brands fa-instagram",
                             href: "#"
                         },
                         {
-                            icon: "/img/facebook.png",
+                            icon: "fa-brands fa-facebook",
                             href: "#"
                         },
                         {
-                            icon: "/img/tiktok.png",
+                            icon: "fa-brands fa-tiktok",
                             href: "#"
                         },
                         {
-                            icon: "/img/youtube.png",
+                            icon: "fa-brands fa-youtube",
                             href: "#"
                         },
                     ] 
