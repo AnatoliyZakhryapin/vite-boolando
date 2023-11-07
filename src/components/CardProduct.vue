@@ -1,14 +1,14 @@
 <script>
     export default {
         props: {
-            image: String,
-            imageBack: String,
-            discount: String,
-            sustainability: String,
+            id: Number,
+            frontImage: String,
+            backImage: String,
             brand: String,
             nameItem: String,
-            salePrice: String,
-            price: String,
+            price: Number,
+            isInFavorites: Boolean,
+            badges: Array,
         }
     }
 </script>
@@ -16,19 +16,27 @@
 <template>
      <div class="card">
         <figure class="card__image">
-            <img :src="image">
-            <img class="image-back" :src="imageBack">
+            <img :src="'/img/' + frontImage">
+            <img class="image-back" :src="'/img/' + backImage">
             <span class="heart-icon"> &hearts;</span>
             <div class="discount-line">
-                <span v-if="discount" class="discount-icon"> {{ discount }}</span>
-                <span v-if="sustainability" class="sustainability-icon">{{ sustainability }}</span>
+                <!-- DISCOUN -->
+                <span 
+                    v-for="badge in this.badges" :key="i"
+                    class="sale-price"
+                >
+                    {{ badge.value }} &euro;
+                </span>
+                <!-- <span v-if="discount" class="discount-icon"> {{ discount }}</span> -->
+                <!-- <span v-if="sustainability" class="sustainability-icon">{{ sustainability }}</span> -->
             </div>
         </figure>
         <div class="card__text">
             <div class="brand-title">{{ brand }}</div>
             <div class="name-item">{{ nameItem }}</div>
             <div class="price-item">
-                <span v-if="salePrice" class="sale-price">{{ salePrice }} &euro;</span>
+                <!-- pricesale -->
+                <!-- <span v-if="salePrice" class="sale-price">{{ salePrice }} &euro;</span> -->
                 <span v-if="price" class="origine-price">{{ price }} &euro;</span>
             </div>
         </div>
@@ -47,8 +55,8 @@
             };
 
             @include heart-icon;
-            @include sustainability-icon; 
-            @include discount-icon; 
+            @include sustainability-icon;
+            @include discount-icon;
             .discount-line {
                 bottom: 10%;
                 position: absolute;
