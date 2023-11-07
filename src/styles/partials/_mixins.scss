@@ -65,3 +65,29 @@
         margin-right: 10px;
     }
 }
+
+@mixin header-menu {
+    ul {
+        @include d-flex-align-center;
+        a {
+            display: block;
+            padding: 0 10px;
+            line-height: 20px;
+        }
+    };
+}
+
+@mixin header-menu {
+    ul {
+        @include d-flex-align-center;
+        a {
+            display: block;
+            padding: 0 10px;
+            line-height: 20px;
+        }
+        .icon {
+            display: inline-block;
+            width: $font-size;
+        }
+    };
+}

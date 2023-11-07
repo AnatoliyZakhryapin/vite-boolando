@@ -1,36 +1,47 @@
 <script>
+    import Menu from './Menu.vue';
+
     export default {
         data() {
             return {
-                gendersMenu: [
-                    {
-                        title: "Donna",
-                        url: "#"
-                    },
-                    {
-                        title: "Uomo",
-                        url: "#"
-                    },
-                    {
-                        title: "Bambini",
-                        url: "#"
-                    },
-                ],
-                iconsMenu: [
-                    {
-                        iconUrl: "/img/persona.png",
-                        url: "#"
-                    },
-                    {
-                        iconUrl: "/img/cuore.png",
-                        url: "#"
-                    },
-                    {
-                        iconUrl: "/img/borsa.png",
-                        url: "#"
-                    },
-                ]
+                headerMenu: "header-menu",
+                gendersMenu: {
+                    links: [
+                        {
+                            text: "Donna",
+                            href: "#"
+                        },
+                        {
+                            text: "Uomo",
+                            href: "#"
+                        },
+                        {
+                            text: "Bambini",
+                            href: "#"
+                        },
+                    ]
+                },
+                iconsMenu: {
+                    title: "Title",
+                    links: [
+                        {
+                            icon: "/img/persona.png",
+                            href: "#"
+                        },
+                        {
+                            icon: "/img/cuore.png",
+                            href: "#"
+                        },
+                        {
+                            icon: "/img/borsa.png",
+                            href: "#"
+                        },
+                    ] 
+                }
             }
+        },
+        components: {
+            Menu,
         }
     }
 </script>
@@ -39,24 +50,20 @@
     <header class="header-nav">
         <nav class="container">
             <div class="row">
-                <div class="col">
-                    <ul class="header-nav__gender-menu">
-                        <li class="gender-menu__item" v-for="gender in gendersMenu">
-                            <a :href="gender.url">{{ gender.title }}</a>
-                        </li>
-                    </ul>
+                <div class="col header-menu">
+                    <Menu
+                        :links="gendersMenu.links"
+                    />
                 </div>
                 <div class="col">
                     <div class="logo-content">
                         <img class="logo" src="/img/boolean-logo.png">
                     </div>
                 </div>
-                <div class="col">
-                    <ul class="header-nav__icon-menu">
-                        <li class="icon-menu__item" v-for="icon in iconsMenu">
-                            <a :href="icon.url"><img :src="icon.iconUrl"></a>
-                        </li>
-                    </ul>
+                <div class="col header-menu">
+                    <Menu
+                        :links="iconsMenu.links"
+                    />
                 </div>
             </div>   
         </nav>
@@ -82,19 +89,6 @@
         };
         .logo {
             max-height: $header-logo-height;
-        };
-
-        ul {
-            @include d-flex-align-center;
-            a {
-                display: block;
-                padding: 0 10px;
-                line-height: 20px;
-            }
-            .icon-menu__item {
-                font-size: 50px;
-                width: 40px;
-            }
         };
     }
 </style>
