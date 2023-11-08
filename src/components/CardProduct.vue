@@ -1,4 +1,6 @@
 <script>
+    import { store } from '../store';
+
     export default {
         props: {
             id: Number,
@@ -12,7 +14,9 @@
         },
         data() {
             return {
-                isFavoriteCard: this.isInFavorites,
+                // isFavoriteCard: this.isInFavorites,
+                store: store,
+                index: 0
             }
         },
         methods: {
@@ -40,7 +44,10 @@
                 return badge.type === "discount";
             },
             addToFavorites(){
-                this.isFavoriteCard = !this.isFavoriteCard
+                // this.store. = !this.isFavoriteCard
+                const index = this.id - 1; 
+                console.log(index)
+                this.store.products[index].isInFavorites = !this.store.products[index].isInFavorites
             }
         }
     }
@@ -53,7 +60,7 @@
             <img class="image-back" :src="'/img/' + backImage">
             <span 
                 class="heart-icon" 
-                :class="{ 'in-favorites' : this.isFavoriteCard}"
+                :class="{ 'in-favorites' :  isInFavorites}"
                @click="addToFavorites()"
             > 
                 &hearts;
