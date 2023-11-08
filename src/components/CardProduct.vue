@@ -25,7 +25,7 @@
                 });
                 const sconto = Math.abs(Number(scontoSting.replace(/%/g, ""))) / 100;
                 const salePrice = price - (price * sconto);
-                return salePrice.toPrecision(4);
+                return salePrice.toFixed(2);
             },
             isDiscount(array){
                 let isDiscount = false;
