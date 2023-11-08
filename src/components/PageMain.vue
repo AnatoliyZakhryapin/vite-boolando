@@ -7,7 +7,8 @@
         data() {
             return {
                 // cards: dataBase.products, - import dal file json
-                cards: store.products
+                store: store,
+                // cards: store.products
             }
         },
         components: {
@@ -21,7 +22,7 @@
         <section class="main-section">
             <div class="container">
                 <div class="row">
-                    <div class="col-4" v-for="card in cards">
+                    <div class="col-4" v-for="card in store.products">
                         <CardProduct
                             :id="card.id"
                             :frontImage="card.frontImage"
