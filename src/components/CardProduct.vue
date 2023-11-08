@@ -62,7 +62,7 @@
                     :key="i"
                     :class="badge.type === 'tag'? 'sustainability-icon' : 'discount-icon' "
                 >
-                    {{ badge.value }} &euro;
+                    {{ badge.value }}
                 </span>
                 <!-- <span v-if="discount" class="discount-icon"> {{ discount }}</span> -->
                 <!-- <span v-if="sustainability" class="sustainability-icon">{{ sustainability }}</span> -->
