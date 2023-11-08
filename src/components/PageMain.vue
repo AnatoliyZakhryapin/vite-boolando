@@ -1,16 +1,17 @@
 <script>
     import CardProduct from './CardProduct.vue';
-    import dataBase from '../db.json';
+    // import dataBase from '../db.json'; - import dal file json
+    import { store } from '../store';
     
     export default {
         data() {
             return {
-                cards: dataBase.products,
+                // cards: dataBase.products, - import dal file json
+                cards: store.products
             }
         },
         components: {
             CardProduct,
-            dataBase,
         }
     }
 </script>
