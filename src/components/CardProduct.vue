@@ -27,14 +27,17 @@
                 const salePrice = price - (price * sconto);
                 return salePrice.toFixed(2);
             },
-            isDiscount(array){
-                let isDiscount = false;
-                array.forEach(element => {
-                    if(element.type === "discount"){
-                        isDiscount = true;
-                    }
-                });
-                return isDiscount;
+            // isDiscount(array){
+            //     let isDiscount = false;
+            //     array.forEach(element => {
+            //         if(element.type === "discount"){
+            //             isDiscount = true;
+            //         }
+            //     });
+            //     return isDiscount;
+            // },
+            isDiscount(badge){
+                return badge.type === "discount";
             },
             addToFavorites(){
                 this.isFavoriteCard = !this.isFavoriteCard
@@ -73,7 +76,8 @@
             <div class="name-item">{{ nameItem }}</div>
             <div class="price-item">
                 <!-- pricesale -->
-                <span v-if="isDiscount(badges)">{{ salePrice(price, badges) }} &euro;</span>
+                <!-- <span v-if="isDiscount(badges)">{{ salePrice(price, badges) }} &euro;</span> -->
+                <span v-if="badges.find(isDiscount)">{{ salePrice(price, badges) }} &euro;</span>
                 <span v-if="price">{{ price }} &euro;</span>
             </div>
         </div>
