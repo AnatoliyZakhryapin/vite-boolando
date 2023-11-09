@@ -16,40 +16,39 @@
         store: store, 
       }
     },
+    computed: {
+      favorites: function() {
+        console.log("ciao favorites")
+        return this.store.idFavorites
+      },
+      products: function() {
+        console.log("ciao products")
+        return this.store.products
+      }
+    },
     methods: {
       checkFavorites() {
-        
-        // console.log("array favorit",this.store.idFavorites)
+        console.log("array fav start",this.store.idFavorites)
+        this.store.products.forEach((product) =>{
 
-        this.store.products.forEach((product) => {
-          const idToPush = product.id;
-
-          // let control = false;
-          // this.store.idFavorites.forEach((el) => {
-          //   if(el == product.id) {
-          //     control = true;
-          //   }
-          //   return control
-          // })
-
-          // console.log("id",product.id, product.isInFavorites, "control", control)
-          
-          if(product.isInFavorites) {
-            store.idFavorites.push(idToPush)
+          function checkId(id) {
+            return id == product.id;
           }
+
+          const isPresentId =  this.favorites.find(checkId);
+          console.log(
+            "id", product.id, "/",
+            product.isInFavorites, "/",
+            isPresentId
+            )
+
+          if(product.isInFavorites && isPresentId === undefined) {
+            store.idFavorites.push(product.id)
+          }
+        })
           
-        }) 
-        console.log("array fav", this.store.idFavorites)
+        console.log("array fav end", this.store.idFavorites)
       },
-      created() {
-        // this.checkFavorites()
-        // axios
-        //   .get('http://localhost:3000/products')
-        //   .then((response) => {
-        //     this.store.products = response.data;
-        //     console.log(store, store.products)
-        //  })
-      }
     },
     mounted() {
       this.checkFavorites()
@@ -71,6 +70,14 @@
     <button @click="checkFavorites()">
       ciao 
     </button>
+    <div>
+      <h1>
+        favorit
+      </h1>
+      <p>{{ favorites }}</p>
+      <p>quantita store.products {{ store.products.length }}</p>
+      <p>quantita idFavorites {{ favorites.length }}</p>
+    </div>
   </div>
   <PageMain/>
   <PageFooter/>
