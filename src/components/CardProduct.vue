@@ -81,7 +81,9 @@
                 :class="{ 'in-favorites' :  isInFavorites}"
                @click.stop="addToFavorites(), onClick()"
             > 
-                &hearts;
+                <!-- &hearts; -->
+                <font-awesome-icon icon="fa-solid fa-heart" v-if="isInFavorites"/>
+                <font-awesome-icon icon="fa-regular fa-heart" v-if="!isInFavorites"/>
             </span>
             <div class="discount-line">
                 <!-- DISCOUN -->
