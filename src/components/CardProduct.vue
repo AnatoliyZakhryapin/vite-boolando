@@ -48,6 +48,9 @@
                 const index = this.id - 1; 
                 console.log(index)
                 this.store.products[index].isInFavorites = !this.store.products[index].isInFavorites
+            },
+            onClick() {
+                console.log(this.store.idFavorites)
             }
         }
     }
@@ -61,7 +64,7 @@
             <span 
                 class="heart-icon" 
                 :class="{ 'in-favorites' :  isInFavorites}"
-               @click="addToFavorites()"
+               @click="addToFavorites(), onClick()"
             > 
                 &hearts;
             </span>

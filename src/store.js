@@ -4,4 +4,5 @@ import { reactive } from "vue";
 export const store = reactive({
     // products: productsJSON.products - import from db.json
     products: [],
+    idFavorites: [],
 })

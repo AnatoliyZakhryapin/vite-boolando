@@ -12,19 +12,47 @@
       PageFooter,
     },
     data() {
-    return {
-        // store: store, 
+      return {
+        store: store, 
       }
     },
-    created() {
-      // axios
-      //   .get('http://localhost:3000/products')
-      //   .then((response) => {
-      //     this.store.products = response.data;
-      //     console.log(store, store.products)
-      //   })
+    methods: {
+      checkFavorites() {
+        
+        // console.log("array favorit",this.store.idFavorites)
+
+        this.store.products.forEach((product) => {
+          const idToPush = product.id;
+
+          // let control = false;
+          // this.store.idFavorites.forEach((el) => {
+          //   if(el == product.id) {
+          //     control = true;
+          //   }
+          //   return control
+          // })
+
+          // console.log("id",product.id, product.isInFavorites, "control", control)
+          
+          if(product.isInFavorites) {
+            store.idFavorites.push(idToPush)
+          }
+          
+        }) 
+        console.log("array fav", this.store.idFavorites)
+      },
+      created() {
+        // this.checkFavorites()
+        // axios
+        //   .get('http://localhost:3000/products')
+        //   .then((response) => {
+        //     this.store.products = response.data;
+        //     console.log(store, store.products)
+        //  })
+      }
     },
     mounted() {
+      this.checkFavorites()
       axios
         .get('http://localhost:3000/products')
         .then((response) => {
@@ -39,6 +67,11 @@
 
 <template>
   <PageHeader/>
+  <div>
+    <button @click="checkFavorites()">
+      ciao 
+    </button>
+  </div>
   <PageMain/>
   <PageFooter/>
  
@@ -46,4 +79,7 @@
 
 <style lang="scss">
   @use './styles/general.scss';
+  button {
+    margin-top: 100px;
+  }
 </style>

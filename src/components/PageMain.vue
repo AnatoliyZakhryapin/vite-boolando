@@ -8,7 +8,6 @@
             return {
                 // cards: dataBase.products, - import dal file json
                 store: store,
-                // cards: store.products
             }
         },
         components: {
@@ -22,16 +21,16 @@
         <section class="main-section">
             <div class="container">
                 <div class="row">
-                    <div class="col-4" v-for="card in store.products">
+                    <div class="col-4" v-for="product in store.products">
                         <CardProduct
-                            :id="card.id"
-                            :frontImage="card.frontImage"
-                            :backImage="card.backImage"
-                            :brand="card.brand"
-                            :nameItem="card.name"
-                            :price="card.price"
-                            :isInFavorites="card.isInFavorites"
-                            :badges="card.badges"                     
+                            :id="product.id"
+                            :frontImage="product.frontImage"
+                            :backImage="product.backImage"
+                            :brand="product.brand"
+                            :nameItem="product.name"
+                            :price="product.price"
+                            :isInFavorites="product.isInFavorites"
+                            :badges="product.badges"                     
                         />
                     </div>
                 </div>
