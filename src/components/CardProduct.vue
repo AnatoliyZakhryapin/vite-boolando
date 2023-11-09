@@ -58,7 +58,7 @@
 </script>
 
 <template>
-     <div class="card"  @click="$emit('show', item)">
+     <div class="card"  @click="$emit('show', item, price, salePrice(price, badges) )">
         <figure class="card__image">
             <img :src="'/img/' + frontImage">
             <img class="image-back" :src="'/img/' + backImage">
