@@ -16,15 +16,12 @@
             CardProduct,
         },
         methods: {
-            showModal(product, price, salePrice) {
+            showModal(product, salePrice, isDiscount) {
                 console.log('show modal')
                 this.open = true;
                 this.productSelected.product = product;
-                this.productSelected.price = price;
-                if(salePrice){
-                    this.productSelected.salePrice = salePrice;
-                }
-                console.log(price, "saòe", salePrice)
+                this.productSelected.salePrice = salePrice;
+                this.productSelected.isDiscount = isDiscount;
             },
             closeModal() {
                 this.open = false
@@ -73,15 +70,26 @@
                         <font-awesome-icon @click="closeModal" :icon="['far', 'circle-xmark']" />   
                     </div>
                     <div class="card__text__body">
-                        <p class="product-name"> {{ productSelected.product.name }}</p>
-                        <p class="product-description">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum ullam voluptatem dolor cumque, molestiae nobis. Corporis iste adipisci quasi consequatur quos error, rem vero? Illo provident cum quis eos aliquid.
-                        </p>
+                        <div class="product-name"> 
+                            <p>{{ productSelected.product.name }}</p>
+                        </div>
+                        <div class="product-promo discount-line">
+                            <span 
+                                v-for="(badge,i) in productSelected.product.badges" 
+                                :key="i"
+                                :class="badge.type === 'tag'? 'sustainability-icon' : 'discount-icon' "
+                            >
+                                {{ badge.value }}
+                            </span>
+                        </div> 
+                        <div class="product-description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo ullam a non. Enim sed voluptatibus voluptas sunt laboriosam animi quam at corrupti odit quidem, debitis non maxime exercitationem quia modi.</p>
+                        </div>
                     </div>
                     <div class="card__text__footer">
                        <div class="price-item">
-                            <span v-if="productSelected.salePrice">{{ productSelected.salePrice }} &euro;</span>
-                            <span >{{ productSelected.price }} &euro;</span>
+                            <span >{{ productSelected.product.price }} &euro;</span>
+                            <span v-if="productSelected.isDiscount">{{ productSelected.salePrice }} &euro;</span>
                        </div>
                     </div>
                     </div>
@@ -93,6 +101,7 @@
 
 <style lang="scss" scoped>
     @use '../styles/partials/varibils' as *;
+    @use '../styles/partials/mixins' as *;
     .main-section {
         padding: $main-padding;
         row-gap: 30px;
@@ -142,8 +151,14 @@
             }
             .card__text__body {
                 .product-name {
-                    margin-bottom: 20px;
+                    margin-bottom: 30px;
                 }
+                .product-promo {
+                    @include sustainability-icon;
+                    @include discount-icon;
+                    margin-bottom: 10px;
+                }
+              
                 .product-description {
                     font-size: 12px;
                 }
@@ -155,6 +170,7 @@
                     color: red;
                     font-weight: 700;
                     margin-right: 5px;
+                    font-size: 30px;
                 }
                 & > :nth-child(2) {
                     text-decoration: line-through;

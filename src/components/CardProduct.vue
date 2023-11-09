@@ -21,14 +21,25 @@
             }
         },
         methods: {
+            getSalePriceModal(){
+                let salePriceM;
+                if(!this.salePrice(this.price, this.badges)){
+                    salePriceM = "undefined"
+                } else {
+                    salePriceM = this.salePrice(this.price, this.badges)
+                }
+                console.log(salePriceM)
+                return salePriceM
+            },
             salePrice(price, array){
-                let scontoSting;
+                let scontoSting = "-0%";
+                let sconto;
                 array.forEach(element => {
                     if(element.type === "discount"){
                         scontoSting = element.value;
                     }
                 });
-                const sconto = Math.abs(Number(scontoSting.replace(/%/g, ""))) / 100;
+                sconto = Math.abs(Number(scontoSting.replace(/%/g, ""))) / 100;
                 const salePrice = price - (price * sconto);
                 return salePrice.toFixed(2);
             },
@@ -41,8 +52,10 @@
             //     });
             //     return isDiscount;
             // },
-            isDiscount(badge){
-                return badge.type === "discount";
+            isDiscount(){
+               return this.badges.find(function(badge){
+                    return badge.type === "discount";
+                })
             },
             addToFavorites(){
                 // this.store. = !this.isFavoriteCard
@@ -58,7 +71,8 @@
 </script>
 
 <template>
-     <div class="card"  @click="$emit('show', item, price, salePrice(price, badges) )">
+     <!-- <div class="card"  @click="$emit('show', item, price, getSalePriceModal())"> -->
+        <div class="card"  @click="$emit('show',item, salePrice(price, badges), isDiscount()  )">
         <figure class="card__image">
             <img :src="'/img/' + frontImage">
             <img class="image-back" :src="'/img/' + backImage">
@@ -88,7 +102,7 @@
             <div class="price-item">
                 <!-- pricesale -->
                 <!-- <span v-if="isDiscount(badges)">{{ salePrice(price, badges) }} &euro;</span> -->
-                <span v-if="badges.find(isDiscount)">{{ salePrice(price, badges) }} &euro;</span>
+                <span v-if="isDiscount()">{{ salePrice(price, badges) }} &euro;</span>
                 <span v-if="price">{{ price }} &euro;</span>
             </div>
         </div>
