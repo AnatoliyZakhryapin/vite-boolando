@@ -79,7 +79,7 @@
             <span 
                 class="heart-icon" 
                 :class="{ 'in-favorites' :  isInFavorites}"
-               @click="addToFavorites(), onClick()"
+               @click.stop="addToFavorites(), onClick()"
             > 
                 &hearts;
             </span>
