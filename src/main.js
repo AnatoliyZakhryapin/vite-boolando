@@ -15,8 +15,9 @@ import { faBagShopping as fasBagShopping } from '@fortawesome/free-solid-svg-ico
 import {
 	faUser as farUser,
 	faHeart as farHeart,
+	faCircleXmark as farCircleXmark
 } from '@fortawesome/free-regular-svg-icons'
 
-library.add(fasBagShopping, farUser, farHeart, fabTwiterr, fabInstagram, fabFacebook, fabTiktok, fabYoutube )
+library.add(fasBagShopping, farUser, farHeart, farCircleXmark, fabTwiterr, fabInstagram, fabFacebook, fabTiktok, fabYoutube )
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).mount('#app')

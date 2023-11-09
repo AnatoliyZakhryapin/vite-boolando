@@ -3,6 +3,7 @@
 
     export default {
         props: {
+            item: Object,
             id: Number,
             frontImage: String,
             backImage: String,
@@ -57,7 +58,7 @@
 </script>
 
 <template>
-     <div class="card">
+     <div class="card"  @click="$emit('show', item)">
         <figure class="card__image">
             <img :src="'/img/' + frontImage">
             <img class="image-back" :src="'/img/' + backImage">
