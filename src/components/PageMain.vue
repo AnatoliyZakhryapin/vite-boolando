@@ -84,12 +84,31 @@
                         </div> 
                         <div class="product-description">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo ullam a non. Enim sed voluptatibus voluptas sunt laboriosam animi quam at corrupti odit quidem, debitis non maxime exercitationem quia modi.</p>
+                            <i class="fa-solid fa-heart-circle-plus"></i>
                         </div>
                     </div>
                     <div class="card__text__footer">
                        <div class="price-item">
                             <span >{{ productSelected.product.price }} &euro;</span>
                             <span v-if="productSelected.isDiscount">{{ productSelected.salePrice }} &euro;</span>
+                       </div>
+                       <div class="icon-menu-modal">
+                            <ul class="menu-modal">
+                                <li>
+                                    <a href="#">
+                                        <span class="icon">
+                                            <font-awesome-icon icon="fa-solid fa-heart-circle-plus" />
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="icon">
+                                            <font-awesome-icon icon="fa-solid fa-cart-plus" />
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
                        </div>
                     </div>
                     </div>
@@ -165,17 +184,33 @@
             }
             .card__text__footer {
                 margin-top: auto;
+                display: flex;
+                justify-content: space-between;
                 .price-item {
-                & > :first-child {
-                    color: red;
-                    font-weight: 700;
-                    margin-right: 5px;
-                    font-size: 30px;
+                    & > :first-child {
+                        color: red;
+                        font-weight: 700;
+                        margin-right: 5px;
+                        font-size: 30px;
+                    }   
+                    & > :nth-child(2) {
+                        text-decoration: line-through;
+                    }
                 }
-                & > :nth-child(2) {
-                    text-decoration: line-through;
+                .icon-menu-modal {
+                    .menu-modal{
+                        display: flex;
+                        a {
+                            display: block;
+                            padding: 0 10px;
+                            line-height: 20px;
+                        }
+                        .icon {
+                            display: inline-block;
+                            width: $font-size;
+                        }
+                    }
                 }
-            }
             }
         }
     }

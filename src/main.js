@@ -13,7 +13,10 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import { 
 	faBagShopping as fasBagShopping,
-	faHeart as fasHeart
+	faHeart as fasHeart,
+	faHeartCirclePlus as fasHeartCirclePlus,
+	faCartShopping as fasCartShopping,
+	faCartPlus as fasCartPlus,
 } from '@fortawesome/free-solid-svg-icons'
 import {
 	faUser as farUser,
@@ -21,6 +24,20 @@ import {
 	faCircleXmark as farCircleXmark
 	} from '@fortawesome/free-regular-svg-icons'
 
-library.add(fasBagShopping, farUser, farHeart, fasHeart, farCircleXmark, fabTwiterr, fabInstagram, fabFacebook, fabTiktok, fabYoutube )
+library.add(
+	fasBagShopping,
+	farUser,
+	farHeart,
+	fasHeart,
+	fasHeartCirclePlus,
+	farCircleXmark,
+	fabTwiterr,
+	fabInstagram,
+	fabFacebook,
+	fabTiktok,
+	fabYoutube,
+	fasCartShopping,
+	fasCartPlus,
+	)
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
