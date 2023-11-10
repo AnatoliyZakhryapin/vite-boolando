@@ -16,12 +16,13 @@
             CardProduct,
         },
         methods: {
-            showModal(product, salePrice, isDiscount) {
+            showModal(product, salePrice, isDiscount, AddToFavorites) {
                 console.log('show modal')
                 this.open = true;
                 this.productSelected.product = product;
                 this.productSelected.salePrice = salePrice;
                 this.productSelected.isDiscount = isDiscount;
+                this.productSelected.AddToFavorites = AddToFavorites;
             },
             closeModal() {
                 this.open = false
@@ -96,7 +97,11 @@
                             <ul class="menu-modal">
                                 <li>
                                     <a href="#">
-                                        <span class="icon">
+                                        <span 
+                                            class="icon" 
+                                            :class="{ 'in-favorites' : productSelected.product.isInFavorites}"
+                                            @click.stop="this.productSelected.AddToFavorites()"
+                                            >
                                             <font-awesome-icon icon="fa-solid fa-heart-circle-plus" />
                                         </span>
                                     </a>
@@ -208,6 +213,9 @@
                         .icon {
                             display: inline-block;
                             width: $font-size;
+                            &.in-favorites {
+                                color: red;
+                            }
                         }
                     }
                 }

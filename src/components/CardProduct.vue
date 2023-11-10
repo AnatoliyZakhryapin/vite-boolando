@@ -72,7 +72,7 @@
 
 <template>
      <!-- <div class="card"  @click="$emit('show', item, price, getSalePriceModal())"> -->
-        <div class="card"  @click="$emit('show',item, salePrice(price, badges), isDiscount()  )">
+        <div class="card"  @click="$emit('show',item, salePrice(price, badges), isDiscount(), addToFavorites)">
         <figure class="card__image">
             <img :src="'/img/' + frontImage">
             <img class="image-back" :src="'/img/' + backImage">
